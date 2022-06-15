@@ -1,0 +1,76 @@
+4. Write a program to implement Distance Vector Routing Algorithm.
+PROGRAM
+#include<stdio.h>
+#include<math.h>
+#include<conio.h>
+main()
+{
+int i,j,k,nv,sn,noadj,edel[20],tdel[20][20],min;
+char sv,adver[20],ch;
+clrscr();
+printf("\n ENTER THE NO.OF VERTECES:");
+scanf("%d",&nv);
+printf("\n ENTER THE SOURCE VERTEX NUM,BER AND NAME:");
+scanf("%d",&sn);
+flushall();
+sv=getchar();
+printf("\n NETER NO.OF ADJ VERTECES TO VERTEX %c",sv);
+scanf("%d",&noadj);
+for(i=0;i<noadj;i++)
+{
+printf("\n ENTER TIME DELAY and NODE NAME:");
+scanf("%d %c",&edel[i],&adver[i]);
+}
+for(i=0;i<noadj;i++)
+{
+printf("\n ENTER THE TIME DELAY FROM %c to ALL OTHER NODES: ",adver[i]);
+for(j=0;j<nv;j++)
+scanf("%d",&tdel[i][j]);
+}
+printf("\n DELAY VIA--VERTEX \n ");
+for(i=0;i<nv;i++)
+{
+min=1000;
+ch=0;
+for(j=0;j<noadj;j++)
+if(min>(tdel[j][i]+edel[j]))
+{
+min=tdel[j][i]+edel[j];
+ch=adver[j];
+}
+if(i!=sn-1)
+printf("\n%d %c",min,ch);
+else
+printf("\n0 -");
+}
+getch(); 
+}
+INPUT/OUTPUT:
+ENTER THE NO.OF VERTECES:12
+ENTER THE SOURCE VERTEX NUMBER AND NAME:10 J
+ENTER NO.OF ADJ VERTECES TO VERTEX 4
+ENTER TIME DELAY and NODE NAME:8 A
+ENTER TIME DELAY and NODE NAME:10 I
+ENTER TIME DELAY and NODE NAME:12 H
+ENTER TIME DELAY and NODE NAME:6 K
+ENTER THE TIME DELAY FROM A to ALL OTHER NODES:
+0 12 25 40 14 23 18 17 21 9 24 29
+ENTER THE TIME DELAY FROM I to ALL OTHER NODES:
+24 36 18 27 7 20 31 20 0 11 22 33
+ENTER THE TIME DELAY FROM H to ALL OTHER NODES:
+20 31 19 8 30 19 6 0 14 7 22 9
+ENTER THE TIME DELAY FROM K to ALL OTHER NODES:
+21 28 36 24 22 40 31 19 22 10 0 9
+DELAY VIA--VERTEX
+8 a
+20 a
+28 i
+20 h
+17 i
+30 i
+18 h
+12 h
+10 i
+0 -
+6 k
+15 k
